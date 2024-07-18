@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>Todo Tracker</h1>
+    <form>
+        <input type="text" id="todoInput" placeholder="Enter your todo" Required>
+    </form>
+    <h1>LIST</h1>
+      <ul id="todoList" class="todos">
+      </ul>
+    <button id='clear'>Clear All</button>
+
+    <script>
+      var form = document.querySelector('form');
+      var todolist = document.querySelector('ul');
+      var button = document.querySelector('button');
+      var input = document.getElementById('todoInput');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        todoMaker(input.value);
+        input.value = '';
+      });
+
+       var todoMaker = function(text){
+        var todo = document.createElement('li');
+        todo.textContent = text;
+        todolist.appendChild(todo);
+
+       };
+
+       button.addEventListener('click', function(){
+        while (todolist.firstChild){
+           todolist.removeChild(todolist.firstChild);  
+        }
+       })
+
+    </script>
+</body>
+</html>
